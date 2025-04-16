@@ -12,14 +12,14 @@
   --animation-duration: 0.8s;
   --header-height: 70px;
 
-  /* Restored original robot variables */
+  /* Robot variables */
   --robot-height: 650px;
   --robot-max-width: 750px;
   --robot-overlap: -150px;
   --section-pullup: -150px;
   --about-bottom-padding: 60px;
   --values-top-padding: 20px;
-  --about-image-margin-bottom: 90px; 
+  --about-image-margin-bottom: 90px;
 }
 
 /* Base Styles */
@@ -32,7 +32,6 @@ body {
 .container { width: 90%; max-width: 1100px; margin: 0 auto; }
 h1, h2, h3 { color: var(--text-light); margin-bottom: 0.8rem; font-weight: 600; }
 h1 { font-size: 3rem; font-weight: 700; line-height: 1.2;}
-/* Default h2 centered */
 h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; }
 h3 { font-size: 1.4rem; }
 p { color: var(--text-medium); margin-bottom: 1rem; }
@@ -76,7 +75,7 @@ section {
   border-radius: 3px; transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
   transform-origin: center;
 }
-/* Navbar Active State (Kept) */
+/* Navbar Active State */
 .nav-link.active { color: var(--accent-primary); font-weight: 600; }
 .nav-link.active::after { transform: scaleX(1); transform-origin: left; background-color: var(--accent-primary); }
 .main-nav .btn.nav-link.active { background-color: var(--accent-primary); color: var(--bg-dark); border-color: var(--accent-primary); }
@@ -131,82 +130,71 @@ section {
 .feature-card h3 { margin-bottom: 10px; color: var(--accent-primary); }
 
 
-/* === About Section (Restored Robot Overlap & Z-index Logic) === */
+/* === About Section (Robot Overlap & Z-index Logic) === */
 .about-section {
   background-color: var(--bg-dark);
-  overflow: visible; /* Allow robot to overflow */
+  overflow: visible;
   padding-top: 60px;
   padding-bottom: var(--about-bottom-padding);
-  margin-bottom: var(--section-pullup); /* Keep pullup for section overlap */
-  z-index: 10; /* Base z-index for the section */
-  position: relative; /* Establishes stacking context for children */
+  margin-bottom: var(--section-pullup);
+  z-index: 10;
+  position: relative;
 }
-
 .about-content {
   display: flex;
   align-items: center;
   gap: 50px;
-  position: relative; /* Establishes stacking context for flex items */
+  position: relative;
 }
-
 .about-text {
   flex: 1;
-  min-width: 0; /* Prevent flex item growth */
-  position: relative; /* Needed for z-index */
-  z-index: 1; /* Lower stacking order */
-  /* text-align is handled by inline style in HTML for index page */
-  /* text-align: left; */ /* Default alignment (restored) */
+  min-width: 0;
+  position: relative;
+  z-index: 1; /* Text below image */
+  /* Text alignment should be handled by context (page-specific or media query) */
 }
-.about-text .section-title {
-   /* text-align: left; */ /* Default alignment (restored) */
-   /* text-align will inherit from .about-text or be set inline */
-}
-
 .about-image {
   flex: 1;
-  min-width: 0; /* Prevent flex item growth */
-  position: relative; /* Needed for z-index */
+  min-width: 0;
+  position: relative;
   display: flex;
-  justify-content: center; /* Center spline horizontally */
-  align-items: flex-end; /* Align spline to the bottom */
+  justify-content: center;
+  align-items: flex-end;
   margin-bottom: var(--about-image-margin-bottom);
-  max-width: 50%; /* Explicitly limit to half for side-by-side */
-  z-index: 2; /* Higher stacking order than text */
+  max-width: 50%;
+  z-index: 2; /* Image container above text */
 }
-
 .about-image spline-viewer {
   display: block;
-  width: 100%; /* Fill container */
-  max-width: var(--robot-max-width); /* Cap width */
+  width: 100%;
+  max-width: var(--robot-max-width);
   height: var(--robot-height);
-  margin-bottom: var(--robot-overlap); /* Pulls it down visually */
-  position: relative; /* Keep relative for layout */
-  /* No z-index needed here; parent controls stacking */
+  margin-bottom: var(--robot-overlap);
+  position: relative;
   pointer-events: auto;
   transition: height 0.3s ease, max-width 0.3s ease, margin-bottom 0.3s ease;
 }
-.about-image img { display: none; } /* Hide img if spline is used */
+.about-image img { display: none; }
 
 
-/* === Values Section (Restored for potential overlap) === */
+/* === Values Section (Adjusted for Blend) === */
 .values-section {
   background-color: var(--bg-medium);
-  padding-top: var(--values-top-padding); /* Reduced top padding */
+  padding-top: var(--values-top-padding);
   padding-bottom: 60px;
   position: relative;
-  z-index: 0; /* Lower than About section */
+  z-index: 0;
   overflow: hidden;
   transition: padding-top 0.3s ease;
 }
-/* Container padding provides space below the overlapping robot */
-.values-section .container { padding-top: calc(var(--robot-height) * 0.3); /* Example adjustment */ }
+.values-section .container { padding-top: calc(var(--robot-height) * 0.3); /* Adjust as needed based on actual overlap */ }
 .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 2rem; }
 .value-item { text-align: center; padding: 25px; border-radius: 8px; }
 .value-icon { font-size: 2.5rem; margin-bottom: 10px; }
 .value-item h3 { color: var(--accent-primary); margin-bottom: 8px; }
 
 
-/* === Call to Action (CTA) Section (Newsletter form styles kept) === */
+/* === Call to Action (CTA) Section (Newsletter form) === */
 .cta-section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x400/1a1a2e/12121f?text=Background+Image+Here') no-repeat center center/cover;
   background-attachment: fixed;
@@ -214,45 +202,13 @@ section {
   padding: 80px 0;
   overflow: hidden;
 }
-.cta-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-.cta-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: var(--text-light);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* Newsletter Form Styles (Kept) */
-.newsletter-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    max-width: 550px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-.newsletter-input {
-    flex-grow: 1;
-    padding: 12px 20px;
-    font-size: 1rem;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-light);
-    min-width: 250px;
-    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
+.cta-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.cta-content p { font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto; }
+/* Newsletter Form Styles */
+.newsletter-form { display: flex; justify-content: center; align-items: center; gap: 10px; max-width: 550px; margin: 0 auto; flex-wrap: wrap; }
+.newsletter-input { flex-grow: 1; padding: 12px 20px; font-size: 1rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(255, 255, 255, 0.05); color: var(--text-light); min-width: 250px; transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; }
 .newsletter-input::placeholder { color: var(--text-medium); opacity: 0.8; }
-.newsletter-input:focus {
-    outline: none;
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 15px rgba(0, 245, 160, 0.3);
-}
+.newsletter-input:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 15px rgba(0, 245, 160, 0.3); }
 .newsletter-button { padding: 12px 28px; flex-shrink: 0; }
 
 
@@ -277,12 +233,29 @@ section {
 .alt-bg { background-color: var(--bg-medium); }
 
 
-/* === Contact Page & 3D Form === */
-/* (Keep if used on contact.html) */
+/* === Contact Page & 3D Form (RESTORED) === */
+.contact-section { background-color: var(--bg-dark); overflow: hidden; }
+.contact-wrapper { display: flex; gap: 50px; align-items: flex-start; }
+.contact-info { flex-basis: 40%; color: var(--text-medium); }
+.contact-info h3 { color: var(--text-light); }
+.contact-info p { margin-bottom: 15px; display: flex; align-items: center; }
+.contact-icon { color: var(--accent-primary); font-size: 1.2em; margin-right: 10px; display: inline-block; width: 20px; text-align: center; }
+.contact-form-container { flex-basis: 60%; perspective: 1000px; }
+.contact-form { background: var(--bg-medium); padding: 35px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); border: 1px solid rgba(255, 255, 255, 0.1); }
+.contact-form-container:hover .contact-form { transform: rotateY(-5deg) rotateX(3deg) scale(1.02); box-shadow: 0 15px 40px rgba(0, 245, 160, 0.2); }
+.form-title { text-align: center; margin-bottom: 25px; color: var(--text-light); font-size: 1.6rem; font-weight: 600; }
+.form-group { margin-bottom: 20px; transform-style: preserve-3d; }
+.form-group label { display: block; margin-bottom: 8px; color: var(--text-medium); font-weight: 500; font-size: 0.9rem; transition: transform 0.3s ease; transform-origin: left bottom; }
+.form-input, .form-textarea { width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.2); background-color: rgba(18, 18, 31, 0.5); color: var(--text-light); border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; transform: translateZ(0); }
+.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 15px rgba(0, 245, 160, 0.3); transform: translateZ(10px) scale(1.01); }
+.form-input:focus + label, .form-textarea:focus + label { color: var(--accent-primary); }
+.form-textarea { resize: vertical; min-height: 120px; }
+.submit-btn { width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 10px; transform: translateZ(0); transition: all var(--transition-speed) ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.submit-btn:hover { transform: translateY(-4px) scale(1.02) translateZ(15px); box-shadow: 0 10px 25px rgba(0, 245, 160, 0.4); }
+.submit-btn:active { transform: translateY(-1px) scale(0.98) translateZ(5px); }
 
 
 /* --- Animations --- */
-/* (Keep all animation styles) */
 .anim-load { opacity: 0; transition: opacity calc(var(--animation-duration) * 0.8) ease-out, transform var(--animation-duration) ease-out; }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } } @keyframes fadeIn { to { opacity: 1; } } @keyframes scaleIn { from { transform: scale(0.8); } to { opacity: 1; transform: scale(1); } } @keyframes slideInLeft { from { transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } } @keyframes slideInRight { from { transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } } @keyframes slideDown { from { transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } } @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 245, 160, 0.2); } 50% { transform: scale(1.03); box-shadow: 0 8px 25px rgba(0, 245, 160, 0.4); } } @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 .anim-fade-in-up { animation: fadeInUp var(--animation-duration) forwards; transform: translateY(40px); } .anim-fade-in { animation: fadeIn var(--animation-duration) forwards; } .anim-scale-in { animation: scaleIn var(--animation-duration) forwards; } .anim-slide-in-left { animation: slideInLeft var(--animation-duration) forwards; } .anim-slide-in-right { animation: slideInRight var(--animation-duration) forwards; } .anim-slide-down { animation: slideDown var(--animation-duration) forwards; } .anim-pulse { animation: pulse 2s infinite ease-in-out; } .anim-float { animation: float 5s infinite ease-in-out; }
@@ -291,95 +264,60 @@ section {
 
 /* --- Responsiveness --- */
 
-/* Large Tablets / Small Laptops (Side-by-side About - Restored) */
+/* Large Tablets / Small Laptops */
 @media (max-width: 1100px) {
   :root {
-      /* Restore variables for this breakpoint */
       --robot-height: 550px;
       --robot-max-width: 700px;
       --robot-overlap: -120px;
       --section-pullup: -120px;
       --about-bottom-padding: 50px;
-      --values-top-padding: 20px; /* Minimal */
-      --about-image-margin-bottom: 70px; /* Side-by-side margin */
+      --values-top-padding: 20px;
+      --about-image-margin-bottom: 70px;
   }
-  .about-content {
-      flex-direction: row; /* Keep side-by-side */
-      gap: 40px;
-  }
-   /* Restore text alignment for side-by-side */
-   .about-text {
-       text-align: left; /* Align text left */
-   }
-   .about-text .section-title {
-        text-align: left; /* Align title left */
-   }
-   /* Restore flex item sizing */
-   .about-image {
-       max-width: 50%; /* Keep roughly half */
-   }
-   /* Robot width controlled by var(--robot-max-width) */
+  .about-content { flex-direction: row; gap: 40px; }
+  .about-text { text-align: left; } /* Side-by-side text align left */
+  .about-text .section-title { text-align: left; }
+  .about-image { max-width: 50%; }
 }
 
 
-/* Medium Devices (Tablets - Portrait) - Stacking starts here (Restored) */
+/* Medium Devices (Tablets - Portrait) */
 @media (max-width: 992px) {
   :root {
-      /* Restore variables for this breakpoint */
       --robot-height: 450px;
       --robot-max-width: 470px;
       --robot-overlap: -100px;
       --section-pullup: -100px;
       --about-bottom-padding: 40px;
       --values-top-padding: 20px;
-      --about-image-margin-bottom: 60px; /* Stacked margin */
+      --about-image-margin-bottom: 60px;
   }
 
   h1 { font-size: 2.5rem; } h2 { font-size: 2rem; }
   .features-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-  /* About Section Responsive - STACKED (Restored) */
-  .about-content {
-      flex-direction: column;
-      text-align: center; /* Center align items */
-      gap: 30px;
-  }
-  .about-text {
-      margin-bottom: 0;
-      flex-basis: auto; /* Reset basis */
-      min-width: auto;
-      width: 100%; /* Take full width */
-      text-align: center; /* Center text */
-      z-index: 1; /* Ensure correct stacking order */
-  }
-   .about-text .section-title {
-       text-align: center; /* Center title */
-   }
-  .about-image {
-      width: 100%;
-      max-width: none; /* Remove 50% max-width */
-      margin: 0 auto var(--about-image-margin-bottom) auto; /* Center block and apply margin */
-      flex-basis: auto; /* Reset basis */
-      min-width: auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 2; /* Ensure correct stacking order */
-  }
-   .about-image spline-viewer {
-      max-width: min(100%, var(--robot-max-width)); /* Responsive spline */
-      margin-left: auto; margin-right: auto; /* Centering fallback */
-   }
+  /* About Section Responsive - STACKED */
+  .about-content { flex-direction: column; text-align: center; gap: 30px; }
+  .about-text { margin-bottom: 0; flex-basis: auto; min-width: auto; width: 100%; text-align: center; z-index: 1; }
+  .about-text .section-title { text-align: center; }
+  .about-image { width: 100%; max-width: none; margin: 0 auto var(--about-image-margin-bottom) auto; flex-basis: auto; min-width: auto; display: flex; justify-content: center; align-items: flex-end; z-index: 2; }
+  .about-image spline-viewer { max-width: min(100%, var(--robot-max-width)); margin-left: auto; margin-right: auto; }
+  .values-section .container { padding-top: calc(var(--robot-height) * 0.25); }
 
-  .values-section .container { padding-top: calc(var(--robot-height) * 0.25); } /* Adjust padding */
-  
-  .contact-wrapper { flex-direction: column; gap: 40px; } ... */
+  /* Contact Section Responsive (RESTORED) */
+  .contact-wrapper { flex-direction: column; gap: 40px; }
+  .contact-info, .contact-form-container { flex-basis: 100%; }
+  .contact-info { text-align: center; }
+  .contact-info .section-title-left { text-align: center; }
+  .contact-info .section-title-left::after { left: 50%; transform: translateX(-50%); }
+  .contact-info p { justify-content: center; }
+  .contact-form-container:hover .contact-form { transform: rotateY(0deg) rotateX(0deg) scale(1.01); }
 }
 
-/* Small Devices (Landscape Phones, Tablets portrait) (Restored) */
+/* Small Devices (Landscape Phones, Tablets portrait) */
 @media (max-width: 768px) {
   :root {
-      /* Restore variables */
       --robot-height: 400px;
       --robot-max-width: 420px;
       --robot-overlap: -90px;
@@ -392,7 +330,7 @@ section {
   .header-container { padding-left: 5%; padding-right: 5%; }
   .menu-toggle { display: flex; }
 
-  /* Mobile Nav Styles (Keep) */
+  /* Mobile Nav Styles */
   .main-nav { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; padding-top: var(--header-height); background-color: rgba(18, 18, 31, 0.98); backdrop-filter: blur(5px); flex-direction: column; align-items: center; justify-content: center; z-index: 1050; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); visibility: hidden; }
   .main-nav ul { flex-direction: column; align-items: center; width: 100%; }
   .main-nav ul li { margin: 20px 0; margin-left: 0; width: 100%; text-align: center; }
@@ -416,29 +354,28 @@ section {
   .features-grid { grid-template-columns: 1fr; }
   .cta-content h2 { font-size: 2rem; } .cta-content p { font-size: 1.1rem; }
 
-  /* Newsletter form responsiveness (Kept) */
+  /* Newsletter form responsiveness */
   .newsletter-form { flex-direction: column; width: 90%; max-width: 400px; }
   .newsletter-input { width: 100%; min-width: unset; text-align: center; }
   .newsletter-button { width: 100%; }
 
-  /* Override general section padding for About/Values (Restored) */
+  /* Override general section padding for About/Values */
   .about-section { padding-top: 40px; padding-bottom: var(--about-bottom-padding); margin-bottom: var(--section-pullup); }
   .values-section { padding-top: var(--values-top-padding); padding-bottom: 40px; }
-  .values-section .container { padding-top: calc(var(--robot-height) * 0.2); } /* Adjust padding */
+  .values-section .container { padding-top: calc(var(--robot-height) * 0.2); }
   .about-image spline-viewer { max-width: min(100%, var(--robot-max-width)); }
 }
 
-/* Extra Small Devices (Phones portrait) (Restored) */
+/* Extra Small Devices (Phones portrait) */
 @media (max-width: 480px) {
   :root {
-    /* Restore variables */
     --robot-height: 350px;
     --robot-max-width: 370px;
     --robot-overlap: -80px;
     --section-pullup: -80px;
     --about-bottom-padding: 20px;
     --values-top-padding: 10px;
-    --about-image-margin-bottom: 60px; /* Restored */
+    --about-image-margin-bottom: 60px;
   }
 
   h1 { font-size: 2rem; } .hero-content p { font-size: 1rem; }
@@ -446,8 +383,7 @@ section {
   .btn-large { padding: 12px 30px; font-size: 1rem; }
   .page-title { font-size: 2.2rem; } .page-subtitle { font-size: 1.1rem; }
 
-  /* Newsletter form responsiveness (Kept) */
   .newsletter-form { width: 95%; }
-  .values-section .container { padding-top: calc(var(--robot-height) * 0.15); } /* Adjust padding */
+  .values-section .container { padding-top: calc(var(--robot-height) * 0.15); }
   .about-image spline-viewer { max-width: min(100%, var(--robot-max-width)); }
 }
