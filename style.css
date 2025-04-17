@@ -306,13 +306,45 @@ section {
   .values-section .container { padding-top: calc(var(--robot-height) * 0.25); }
 
   /* Contact Section Responsive (RESTORED) */
-  .contact-wrapper { flex-direction: column; gap: 40px; }
-  .contact-info, .contact-form-container { flex-basis: 100%; }
-  .contact-info { text-align: center; }
-  .contact-info .section-title-left { text-align: center; }
-  .contact-info .section-title-left::after { left: 50%; transform: translateX(-50%); }
-  .contact-info p { justify-content: center; }
-  .contact-form-container:hover .contact-form { transform: rotateY(0deg) rotateX(0deg) scale(1.01); }
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contact-info,
+  .contact-form-container {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-info .section-title-left {
+    text-align: center;
+  }
+
+  .contact-info .section-title-left::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact-info p {
+    justify-content: center;
+  }
+
+  .contact-form-container:hover .contact-form {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.01);
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
 }
 
 /* Small Devices (Landscape Phones, Tablets portrait) */
