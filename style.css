@@ -41,7 +41,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 section {
   padding: 60px 0;
-  overflow: hidden; /* Default */
+  overflow: hidden;
   position: relative;
 }
 
@@ -130,7 +130,38 @@ section {
 .feature-card h3 { margin-bottom: 10px; color: var(--accent-primary); }
 
 
-/* === About Section (Robot Overlap & Z-index Logic) === */
+/* === About Section === */
+.home-page .about-section {
+  margin-bottom: 0;
+  padding-bottom: 60px;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Target the About content container ONLY on the homepage */
+.home-page .about-content {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+}
+
+/* Target the About text block ONLY on the homepage */
+.home-page .about-text {
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+.home-page .about-text .section-title {
+    text-align: center;
+}
+.home-page .about-image {
+  display: none; 
+}
+
 .about-section {
   background-color: var(--bg-dark);
   overflow: visible;
@@ -147,22 +178,20 @@ section {
   position: relative;
 }
 .about-text {
-  flex: 1;
+  flex: 1 1 40%;
   min-width: 0;
   position: relative;
-  z-index: 1; /* Text below image */
-  /* Text alignment should be handled by context (page-specific or media query) */
+  z-index: 1;
 }
 .about-image {
-  flex: 1;
+  flex: 1 1 60%;
   min-width: 0;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   margin-bottom: var(--about-image-margin-bottom);
-  max-width: 50%;
-  z-index: 2; /* Image container above text */
+  z-index: 2;
 }
 .about-image spline-viewer {
   display: block;
@@ -177,7 +206,15 @@ section {
 .about-image img { display: none; }
 
 
-/* === Values Section (Adjusted for Blend) === */
+/* === Values Section === */
+.home-page .values-section {
+   padding-top: 60px;
+   padding-bottom: 60px;
+}
+.home-page .values-section .container {
+    padding-top: 0;
+}
+
 .values-section {
   background-color: var(--bg-medium);
   padding-top: var(--values-top-padding);
@@ -187,14 +224,14 @@ section {
   overflow: hidden;
   transition: padding-top 0.3s ease;
 }
-.values-section .container { padding-top: calc(var(--robot-height) * 0.3); /* Adjust as needed based on actual overlap */ }
+.values-section .container { padding-top: calc(var(--robot-height) * 0.3); }
 .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 2rem; }
 .value-item { text-align: center; padding: 25px; border-radius: 8px; }
 .value-icon { font-size: 2.5rem; margin-bottom: 10px; }
 .value-item h3 { color: var(--accent-primary); margin-bottom: 8px; }
 
 
-/* === Call to Action (CTA) Section (Newsletter form) === */
+/* === Call to Action (CTA) Section === */
 .cta-section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x400/1a1a2e/12121f?text=Background+Image+Here') no-repeat center center/cover;
   background-attachment: fixed;
@@ -233,7 +270,7 @@ section {
 .alt-bg { background-color: var(--bg-medium); }
 
 
-/* === Contact Page & 3D Form (RESTORED) === */
+/* === Contact Page & 3D Form === */
 .contact-section { background-color: var(--bg-dark); overflow: hidden; }
 .contact-wrapper { display: flex; gap: 50px; align-items: flex-start; }
 .contact-info { flex-basis: 40%; color: var(--text-medium); }
@@ -276,7 +313,7 @@ section {
       --about-image-margin-bottom: 70px;
   }
   .about-content { flex-direction: row; gap: 40px; }
-  .about-text { text-align: left; } /* Side-by-side text align left */
+  .about-text { text-align: left; }
   .about-text .section-title { text-align: left; }
   .about-image { max-width: 50%; }
 }
@@ -305,7 +342,7 @@ section {
   .about-image spline-viewer { max-width: min(100%, var(--robot-max-width)); margin-left: auto; margin-right: auto; }
   .values-section .container { padding-top: calc(var(--robot-height) * 0.25); }
 
-  /* Contact Section Responsive (RESTORED) */
+  /* Contact Section Responsive */
   .contact-wrapper {
     flex-direction: column;
     gap: 30px;
