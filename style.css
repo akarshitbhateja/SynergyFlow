@@ -140,18 +140,17 @@ section {
   z-index: 10;
   position: relative;
 }
-.about-content {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  position: relative;
+.about-content { 
+  flex-direction: column;
+  text-align: center; gap: 30px;
 }
 .about-text {
-  flex: 1;
-  min-width: 0;
-  position: relative;
-  z-index: 1; /* Text below image */
-  /* Text alignment should be handled by context (page-specific or media query) */
+     margin-bottom: 0;
+     flex-basis: auto;
+     min-width: auto;
+     width: 100%;
+     text-align: center;
+     z-index: 1; 
 }
 .about-image {
   flex: 1;
@@ -201,6 +200,7 @@ section {
   text-align: center;
   padding: 80px 0;
   overflow: hidden;
+  margin-top: 120px;
 }
 .cta-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
 .cta-content p { font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -275,10 +275,11 @@ section {
       --values-top-padding: 20px;
       --about-image-margin-bottom: 70px;
   }
-  .about-content { flex-direction: row; gap: 40px; }
-  .about-text { text-align: left; } /* Side-by-side text align left */
-  .about-text .section-title { text-align: left; }
+  .about-content { flex-direction: column; gap: 40px; }
+  .about-text { text-align: center; } /* Side-by-side text align left */
+  .about-text .section-title { text-align: center; }
   .about-image { max-width: 50%; }
+  .cta-content{ margin-top: -30px; }
 }
 
 
