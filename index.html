@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="home-page">
 
     <!-- ===== Header & Navbar ===== -->
     <header class="site-header">
@@ -23,7 +23,7 @@
             </label>
             <nav class="main-nav">
                 <ul>
-                  <li><a href="index.html" class="nav-link anim-load anim-slide-down anim-delay-1 active">Home</a></li> <!-- Added active class -->
+                  <li><a href="index.html" class="nav-link anim-load anim-slide-down anim-delay-1 active">Home</a></li>
                   <li><a href="features.html" class="nav-link anim-load anim-slide-down anim-delay-2">Features</a></li>
                   <li><a href="about.html" class="nav-link anim-load anim-slide-down anim-delay-3">About</a></li>
                   <li><a href="contact.html" class="nav-link btn btn-secondary anim-load anim-slide-down anim-delay-4">Contact</a></li>
@@ -45,7 +45,6 @@
                     <a href="contact.html" class="btn btn-outline">Request Demo</a>
                 </div>
             </div>
-            <!-- Optional: Subtle animated background shapes/gradient -->
             <div class="hero-background-shapes">
                  <spline-viewer url="https://prod.spline.design/juI0EXjh09wnAVZd/scene.splinecode"></spline-viewer>
                  <div class="shape shape1 anim-float"></div>
@@ -87,12 +86,11 @@
             </div>
         </section>
 
-        <!-- ===== About Section (Centered Text) ===== -->
-         <section id="about" class="about-section">
+        <!-- ===== About Section ===== -->
+        <section id="about" class="about-section">
             <div class="container about-content">
-                 <!-- *** MODIFIED: Added text-align: center style *** -->
-                 <div class="about-text anim-load anim-slide-in-left" style="text-align: center;">
-                    <h2 class="section-title" style="text-align: center;">About SynergyFlow</h2>
+                 <div class="about-text anim-load anim-slide-in-left">
+                    <h2 class="section-title">About SynergyFlow</h2>
                     <p>We believe in the power of synergy. Our mission is to streamline complex processes, empowering teams to focus on what truly matters – innovation and growth. Built with passion and precision.</p>
                     <a href="about.html" class="btn btn-primary anim-load anim-fade-in anim-delay-1">Learn Our Story</a>
                  </div>
@@ -105,7 +103,6 @@
             <div class="container cta-content">
                 <h2 class="anim-load anim-fade-in">Stay Updated With SynergyFlow</h2>
                 <p class="anim-load anim-fade-in anim-delay-1">Subscribe to our newsletter for the latest features and insights.</p>
-                <!-- *** REPLACED BUTTON WITH FORM *** -->
                 <form class="newsletter-form anim-load anim-fade-in-up anim-delay-2">
                     <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
                     <button type="submit" class="btn btn-primary newsletter-button">Subscribe</button>
